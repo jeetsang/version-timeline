@@ -2,12 +2,16 @@
 
 /* Controllers */
 
-var projectDisplayController = function ($scope) {
+var projectDisplayController = function ($scope, $http) {
 
-    $scope.project = {
-        'name': 'Project1'
+    $scope.projects = [];
+
+    var onSuccess = function(data){
+        $scope.projects = data;
     };
+
+    $http.get("data/projects.json").success(onSuccess);
 
 };
 
-dashBoardApp.controller('projectDisplayController', ['$scope', projectDisplayController]);
+dashBoardApp.controller('projectDisplayController', ['$scope', '$http', projectDisplayController]);
