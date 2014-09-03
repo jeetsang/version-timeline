@@ -2,5 +2,9 @@
     {
         "projectName":"promoAdvisor", 
         "description": "Deals with Promotions"       
-    }   
+    },
+    {
+        "projectName":"B2B",
+        "description": "Deals with Promotions"
+    }
 ]
