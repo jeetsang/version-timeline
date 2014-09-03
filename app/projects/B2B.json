@@ -1,0 +1,18 @@
+[
+    {
+        "Versions":
+        {
+            "1.1"   :
+                {
+                    "Wave":1.1,
+                    "PromoAdvisor:":1.2
+                },
+            "1.2"   :
+                {
+                    "Wave":1.1,
+                    "PromoAdvisor:":1.3
+                }
+        }
+        
+    }
+]
