@@ -2,23 +2,22 @@
 
 /* App Module */
 
-var dashBoardApp = angular.module('dashBoardApp', [
-  'ngRoute',
-  'dashBoardControllers'
-]);
+var dashBoardApp = angular.module('dashBoardApp', ['ngRoute']);
 
 dashBoardApp.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/', {
-        templateUrl: 'partials/projectDisplay.html',
-        controller: 'projectDisplayCtrl'
-      }).
-      when('/project', {
-        templateUrl: 'partials/projectEntry.html',
-        controller: 'projectEntryCtrl'
-      }).
-      otherwise({
-        redirectTo: '/'
-      });
-  }]);
+    function($routeProvider) {
+        $routeProvider.
+            when('/', {
+                templateUrl: 'partials/projectDisplay.html',
+                controller: 'projectDisplayController'
+            }).
+            when('/project', {
+                templateUrl: 'partials/projectEntry.html',
+                controller: 'projectEntryController'
+            }).
+            otherwise({
+                redirectTo: '/'
+            });
+    }
+]);
+
