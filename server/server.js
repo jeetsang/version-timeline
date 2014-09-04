@@ -1,5 +1,12 @@
 var http = require('http');
-http.createServer(function (req, res) {
- 
-}).listen(8080, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:8080/');
+var requestHandler = require('./requestHandler')
+
+var hostname = "localhost";
+var port = 8000;
+if(process.argv.length > 2){
+    hostname = process.argv[2];
+    port = process.argv[3];
+}
+
+http.createServer(requestHandler.handle).listen(port, hostname);
+console.log('Server running at http://'+hostname + ':'+ port);
