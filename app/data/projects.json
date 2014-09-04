@@ -1,10 +1,10 @@
 [
     {
-        "projectName":"promoAdvisor", 
+        "name":"promoAdvisor",
         "description": "Deals with Promotions"       
     },
     {
-        "projectName":"B2B",
+        "name":"B2B",
         "description": "Deals with Promotions"
     }
 ]

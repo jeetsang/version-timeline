@@ -9,7 +9,7 @@ describe('Project Display controller', function () {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
         var projects = [
-            {'projectName': "promoAdvisor", 'description': "Deals with Promotions"}
+            {'name': "promoAdvisor", 'description': "Deals with Promotions"}
         ];
         httpBackend.expectGET('data/projects.json').respond(projects);
         var promoAdvisor = {"versionNumber": 0.2, "releaseDate": "01/06/2014", "releaseName": "Delta", "featureList": ["feature1", "feature2"],

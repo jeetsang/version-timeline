@@ -12,7 +12,7 @@ var projectDisplayController = function ($scope, $http) {
         var index;
         for (index = 0; index < $scope.projects.length; index++) {
             var project = $scope.projects[index];
-            $http.get("data/" + project.projectName + ".json").success(function (data) {
+            $http.get("data/" + project.name + ".json").success(function (data) {
                 for(var attr in data){
                     project[attr] = data[attr];
                 }
