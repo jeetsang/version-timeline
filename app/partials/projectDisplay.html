@@ -1,4 +1,4 @@
-<div>
-<p>Project Display Page</p>
-{{project.Name}}
+<div ng-repeat="project in projects">
+    <p>{{project.projectName}}</p>
+    <p>{{project.description}}</p>
 </div>
