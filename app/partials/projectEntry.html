@@ -1,4 +1,29 @@
 <div>
-    <p>Project Entry Page</p>
-    {{5+1}}
+    <h6>Release Entry</h6>
+    <form novalidate class="simple-form">
+        Project : <input type="text" value="Project Name such B2B"><br>
+        Version Number: <input type="text" ng-model="release.versionNumber" /><br />
+        Release Date: <input type="date" ng-model="release.releaseDate" /><br />
+        Release Name: <input type="text" ng-model="release.releaseName"  />
+        <div>
+        Feature List:<input type="text"/><input type="button" value="Add Feature"><br/>
+
+        </div>
+       <div> Bugs:<input type="text"/><input type="button" value="Add Bug"><br/>
+       </div>
+        <div>
+        Comments:<input type="text"><input type="button" value="Add Comment"><br/>
+        </div>
+        Release Type:<input type="text" ng-model="release.releaseType"><br/>
+        Previous Release:<input type="text" ng-model="release.prevRelease"><br/>
+        <div >
+        Dependencies:<br/>
+        Project Name:<input type="text"><br/>
+        Release Version:<input type="text"><br/>
+        </div>
+        <br/>
+        <button ng-click="reset()">RESET</button>
+        <button ng-click="update(user)">SAVE</button>
+    </form>
+
 </div>

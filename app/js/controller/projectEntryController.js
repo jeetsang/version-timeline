@@ -2,12 +2,47 @@
 
 /* Controllers */
 
-var projectEntryController = function ($scope) {
+var projectEntryController = function ($scope,$http) {
 
-    $scope.project = {
-        'name': 'Project1'
-    };
+    var newReleaseObject=[];
+
+
+
+
 
 };
 
-dashBoardApp.controller('projectEntryController', ['$scope', projectEntryController]);
+dashBoardApp.controller('projectEntryController', ['$scope','$http', projectEntryController]);
+
+{
+    "versionNumber": 0.2,
+    "releaseDate":"01/06/2014",
+    "releaseName":"Delta",
+    "featureList":[
+    "feature1",
+    "feature2"
+],
+    "bugs":[
+    "bug1",
+    "bug2"
+],
+    "comments":[
+    "comment1",
+    "comment2"
+],
+    "releaseType":"Major",
+    "prevRelease":0.1,
+    "devDependency":[
+    {
+        "depProjectName":"B2B",
+        "depReleaseVersion":0.1
+    },
+    {
+        "depProjectName":"P4R",
+        "depReleaseVersion":0.1
+    }
+]
+
+
+}
+]
