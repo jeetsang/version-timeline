@@ -1,4 +1,8 @@
-<div ng-repeat="project in projects">
-    <p>{{project.name}}</p>
-    <p>{{project.description}}</p>
+<div class="container">
+    <div ng-repeat="project in projects | orderBy : predicate = 'name.toUpperCase()' : reverse=false" class="row">
+
+        <p>{{project.name}}</p>
+
+        <p>{{project.description}}</p>
+    </div>
 </div>

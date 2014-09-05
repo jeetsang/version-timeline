@@ -6,5 +6,9 @@
     {
         "name":"B2B",
         "description": "Deals with Promotions"
+    },
+    {
+        "name":"P4R",
+        "description": "Deals with Promotions"
     }
 ]

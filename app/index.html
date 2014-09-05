@@ -6,9 +6,10 @@
     <title>Release DashBoard</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+    <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">-->
     <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
     <link rel="stylesheet" href='css/app.css'/>
+    <link rel="stylesheet" href='css/display.css'/>
     <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
@@ -18,11 +19,10 @@
 </head>
 
 <body ng-app="dashBoardApp">
-{{4+3}}
+<div class="header">
+    <h2>Version Timeline</h2>
+</div>
 <div ng-view />
-
-<p></p>
-
 
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
