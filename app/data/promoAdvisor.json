@@ -1,33 +1,38 @@
 [
     {
         "versionNumber": 0.2,
-        "releaseDate":"01/06/2014",
-        "releaseName":"Delta",
-        "featureList":[
-            "feature1",
-            "feature2"
-        ],
-        "bugs":[
-            "bug1",
-            "bug2"
-        ],
-        "comments":[
-            "comment1",
-            "comment2"
-        ],
-        "releaseType":"Major",
-        "prevRelease":0.1,
-        "devDependency":[
+        "releaseDate": "01/06/2014",
+        "releaseName": "Delta",
+        "featureList": ["feature1", "feature2"],
+        "bugs": ["bug1", "bug2"],
+        "comments": ["comment1", "comment2"],
+        "releaseType": "Major",
+        "prevRelease": 0.1,
+        "devDependency": [
             {
-                "depProjectName":"B2B",
-                "depReleaseVersion":0.1
+                "depProjectName": "B2B",
+                "depReleaseVersion": 0.1
             },
             {
-                "depProjectName":"P4R",
-                "depReleaseVersion":0.1
+                "depProjectName": "P4R",
+                "depReleaseVersion": 0.1
             }
         ]
-
-
+    },
+    {
+        "featureList": ["f1"],
+        "bugs": ["b1"],
+        "comments": ["c1"],
+        "devDependency": [
+            {
+                "depProjectName": "d1",
+                "depReleaseVersion": "1"
+            }
+        ],
+        "versionNumber": "11",
+        "releaseDate": "2014-09-08",
+        "releaseName": "kk",
+        "releaseType": "hot",
+        "prevRelease": "1.1"
     }
 ]

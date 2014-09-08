@@ -1,29 +1,46 @@
 <div>
-    <h6>Release Entry</h6>
+    <h4>Release Entry</h4>
     <form novalidate class="simple-form">
-        Project : <input type="text" value="Project Name such B2B"><br>
-        Version Number: <input type="text" ng-model="release.versionNumber" /><br />
-        Release Date: <input type="date" ng-model="release.releaseDate" /><br />
-        Release Name: <input type="text" ng-model="release.releaseName"  />
+
+        Select Project :<select data-ng-model="project.projectName" >
+        <option data-ng-repeat="project in projects">{{project.name}}</option>
+        </select><br>
+        Version Number: <input type="text" data-ng-model="newRelease.versionNumber" /><br />
+        Release Date: <input type="date" data-ng-model="newRelease.releaseDate" /><br />
+        Release Name: <input type="text" data-ng-model="newRelease.releaseName"  />
         <div>
-        Feature List:<input type="text"/><input type="button" value="Add Feature"><br/>
+        Feature List:<input type="text" data-ng-model="featureValue"/><input type="button" value="Add Feature"  ng-click="addFeature()"><br/>
+            <div ng-repeat="feature in newRelease.featureList">
+                <p>{{feature}}</p>
+            </div>
 
         </div>
-       <div> Bugs:<input type="text"/><input type="button" value="Add Bug"><br/>
+       <div> Bugs:<input type="text" data-ng-model="bugValue"/><input type="button" value="Add Bug" ng-click="addBug()"><br/>
+        <div ng-repeat="bug in newRelease.bugs">
+           <p>{{bug}}</p>
+        </div>
        </div>
         <div>
-        Comments:<input type="text"><input type="button" value="Add Comment"><br/>
+        Comments:<input type="text" data-ng-model="commentValue"><input type="button" value="Add Comment" data-ng-Click="addComment()"><br/>
+            <div ng-repeat="comment in newRelease.comments">
+                <p>{{comment}}</p>
+            </div>
         </div>
-        Release Type:<input type="text" ng-model="release.releaseType"><br/>
-        Previous Release:<input type="text" ng-model="release.prevRelease"><br/>
+        Release Type:<input type="text" data-ng-model="newRelease.releaseType"><br/>
+        Previous Release:<input type="text" data-ng-model="newRelease.prevRelease"><br/>
         <div >
         Dependencies:<br/>
-        Project Name:<input type="text"><br/>
-        Release Version:<input type="text"><br/>
+        Project Name:<input type="text" data-ng-model="depProjectName"><br/>
+        Release Version:<input type="text" data-ng-model="depReleaseVersion"><input type="button" value="Add " data-ng-Click="addDependency()"><br/>
+            <div data-ng-repeat="dependency in newRelease.devDependency">
+                <p>{{dependency.depProjectName}}</p>
+                <p>{{dependency.depReleaseVersion}}</p>
+            </div>
         </div>
         <br/>
         <button ng-click="reset()">RESET</button>
-        <button ng-click="update(user)">SAVE</button>
+        <button ng-click="update()">SAVE</button>
+
     </form>
 
 </div>
