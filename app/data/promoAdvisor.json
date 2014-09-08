@@ -1,7 +1,7 @@
 [
     {
         "versionNumber": 0.2,
-        "releaseDate": "01/06/2014",
+        "releaseDate": "2014-06-01",
         "releaseName": "Delta",
         "featureList": ["feature1", "feature2"],
         "bugs": ["bug1", "bug2"],

@@ -68,9 +68,11 @@ var projectEntryController = function ($scope,$http) {
 
             $http.post("data/"+$scope.project.projectName,$scope.project.releases).success(function(data){
                 console.log("Post successful");
+                window.location="http://localhost:8000/app/";
             });
 
         });
+
 
 
 
