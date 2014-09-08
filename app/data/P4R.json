@@ -1,18 +1,21 @@
 [
     {
-        "Versions":
-        {
-            "1.1"   :
-                {
-                    "B2B":1.1,
-                    "PromoAdvisor:":1.2
-                },
-            "1.2"   :
-                {
-                    "B2B":1.1,
-                    "PromoAdvisor:":1.3
-                }
-        }
-        
+        "versionNumber": 0.2,
+        "releaseDate":"06/01/2014",
+        "releaseName":"Delta",
+        "releaseType":"Major",
+        "prevRelease":0.1,
+        "devDependency":[
+            {
+                "depProjectName":"B2B",
+                "depReleaseVersion":0.1
+            },
+            {
+                "depProjectName":"P4R",
+                "depReleaseVersion":0.1
+            }
+        ]
+
+
     }
 ]

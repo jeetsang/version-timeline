@@ -1,8 +1,16 @@
-<div class="container">
-    <div ng-repeat="project in projects | orderBy : predicate = 'name.toUpperCase()' : reverse=false" class="row">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-2">
+            <div ng-repeat="project in projects | orderBy : predicate = 'name.toUpperCase()' : reverse=false"   >
 
-        <p>{{project.name}}</p>
+                <span>{{project.name}}</span>
 
-        <p>{{project.description}}</p>
+                <div ng-repeat="release in project.releases | orderBy : predicate = '-releaseDate' : reverse=false">
+                    <span>{{release.versionNumber}}</span>
+                    <span>{{release.releaseDate}}</span>
+                    <span>{{release.releaseName}}</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

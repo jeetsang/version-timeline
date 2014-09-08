@@ -5,18 +5,22 @@
 var projectDisplayController = function ($scope, $http) {
 
     $scope.projects = [];
-    $scope.eachProjects = [];
 
     var onProjectsSuccess = function (data) {
         $scope.projects = data;
         var index;
         for (index = 0; index < $scope.projects.length; index++) {
             var project = $scope.projects[index];
-            $http.get("data/" + project.name + ".json").success(function (data) {
-                for(var attr in data){
-                    project[attr] = data[attr];
-                }
-            });
+            console.log("Inside "+project);
+
+            var callback = function(index){
+                return function (releaseData) {
+                    $scope.projects[index]['releases'] = releaseData;
+                    console.log("I am inside success for "+$scope.projects[index].name);
+                };
+            };
+
+            $http.get("data/" + project.name + ".json").success(callback(index));
         }
     };
 

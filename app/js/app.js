@@ -7,7 +7,7 @@ var dashBoardApp = angular.module('dashBoardApp', ['ngRoute']);
 dashBoardApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-            when('/', {
+            when('/display', {
                 templateUrl: 'partials/projectDisplay.html',
                 controller: 'projectDisplayController'
             }).
@@ -16,7 +16,7 @@ dashBoardApp.config(['$routeProvider',
                 controller: 'projectEntryController'
             }).
             otherwise({
-                redirectTo: '/'
+                redirectTo: '/display'
             });
     }
 ]);
