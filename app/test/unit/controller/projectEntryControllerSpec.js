@@ -60,30 +60,30 @@ describe('Project Entry controller', function () {
 
     }));
 
-
-
-    it('should check no of releases',function(){
-        console.log(scope.projects);
-        expect(scope.projects.length).toBe(0);
-        httpBackend.flush();
-        expect(scope.projects.length).toBe(1);
-    });
-
-    it('should update individual project release', function(){
-        httpBackend.flush();
-        projects[0].releases = releases;
-        httpBackend.expectGET('data/promoAdvisor').respond(projects[0].releases);
-        httpBackend.expectPOST('data/promoAdvisor').respond('');
-        scope.project.projectName = 'promoAdvisor';
-        scope.newRelease = {
-                "versionNumber": 0.2,
-                "releaseDate":"01/06/2014",
-                "releaseName":"Delta"
-        };
-
-
-        scope.update();
-        httpBackend.flush();
-        expect(scope.project.releases.length).toBe(2);
-    });
+//
+//
+//    it('should check no of releases',function(){
+//        console.log(scope.projects);
+//        expect(scope.projects.length).toBe(0);
+//        httpBackend.flush();
+//        expect(scope.projects.length).toBe(1);
+//    });
+//
+//    it('should update individual project release', function(){
+//        httpBackend.flush();
+//        projects[0].releases = releases;
+//        httpBackend.expectGET('data/promoAdvisor').respond(projects[0].releases);
+//        httpBackend.expectPOST('data/promoAdvisor').respond('');
+//        scope.project.projectName = 'promoAdvisor';
+//        scope.newRelease = {
+//                "versionNumber": 0.2,
+//                "releaseDate":"01/06/2014",
+//                "releaseName":"Delta"
+//        };
+//
+//
+//        scope.update();
+//        httpBackend.flush();
+//        expect(scope.project.releases.length).toBe(2);
+//    });
 });

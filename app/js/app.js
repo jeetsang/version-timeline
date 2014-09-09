@@ -11,7 +11,7 @@ dashBoardApp.config(['$routeProvider',
                 templateUrl: 'partials/projectDisplay.html',
                 controller: 'projectDisplayController'
             }).
-            when('/project', {
+            when('/project/:name', {
                 templateUrl: 'partials/projectEntry.html',
                 controller: 'projectEntryController'
             }).

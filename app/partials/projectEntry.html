@@ -2,9 +2,7 @@
     <h4>Release Entry</h4>
     <form novalidate class="simple-form">
 
-        Select Project :<select data-ng-model="project.projectName" >
-        <option data-ng-repeat="project in projects">{{project.name}}</option>
-        </select><br>
+        Choosen Project :<label>{{project.name}}</label><br />
         Version Number: <input type="text" data-ng-model="newRelease.versionNumber" /><br />
         Release Date: <input type="date" data-ng-model="newRelease.releaseDate" /><br />
         Release Name: <input type="text" data-ng-model="newRelease.releaseName"  />
