@@ -9,8 +9,15 @@ var chart = function(){
         //Y-Axis
         function updateChart(newValue, oldValue, $scope) {
 
+            var svg = d3.select(element[0]).select('svg');
+            svg.selectAll('g').remove();
+            svg.selectAll('circle').remove();
+
+
             var releaseDates = [];
+            var projectNames = [""];
             $scope.projects.forEach(function(p,i){
+                projectNames.push(p.name);
                 if(typeof p.releases  == "undefined")
                     return;
                 p.releases.forEach(function(r, i){
@@ -20,11 +27,13 @@ var chart = function(){
 
             console.log(releaseDates);
 
+
+            //Y-Axis
             var minDate = new Date(d3.min(releaseDates));
-            var minyDate = new Date(minDate.getFullYear(),minDate.getMonth(),1)
+            var minyDate = new Date(minDate.getFullYear(),minDate.getMonth()-1,1)
 
             var maxDate = new Date(d3.max(releaseDates));
-            var maxyDate = new Date(maxDate.getFullYear(),maxDate.getMonth(),1)
+            var maxyDate = new Date(maxDate.getFullYear(),maxDate.getMonth()+1,1)
 
 //            var yData = releaseDates;
 
@@ -33,12 +42,42 @@ var chart = function(){
 
             console.log(minyDate, maxyDate);
 
-            var axis = d3.svg.axis().scale(yscale).
-                tickFormat(d3.time.format("%Y %d"))
+            var yaxis = d3.svg.axis().scale(yscale).
+                tickFormat(d3.time.format("%Y %b"))
                 .orient('left');
 
-            var svg = d3.select(element[0]).select('svg');
-            svg.append('g').call(axis).attr('transform','translate(100,50)');
+            svg.append('g').call(yaxis).attr('transform','translate(100,50)');
+
+
+
+
+            //X-Axis
+
+            var xData = projectNames.sort();
+
+            var xscale = d3.scale.linear();
+            xscale.domain([0,xData.length]).range([0,500]);
+
+            var xaxis = d3.svg.axis().scale(xscale).tickFormat(function(d){return xData[d]})
+                .orient('bottom');
+
+
+            svg.append('g').call(xaxis).attr('transform','translate(100,50)');
+
+
+
+            //Data Plot
+
+            $scope.projects.forEach(function (d, index) {
+
+                svg.selectAll('circle' + d.name).data(d.releases).enter().append('circle').attr('r', 5).attr('fill', 'green').attr('class', d.name)
+                    .attr('transform', function (eachRelease) {
+                        console.log("The value = " + eachRelease);
+                        return 'translate(' + (xscale(xData.indexOf(d.name)) + 100) + ',' + (yscale(new Date(eachRelease.releaseDate)) + 50) + ')';
+                    });
+
+            });
+
         }
 
         $scope.$watch('projects' , updateChart, true);
