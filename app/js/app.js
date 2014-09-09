@@ -2,7 +2,7 @@
 
 /* App Module */
 
-var dashBoardApp = angular.module('dashBoardApp', ['ngRoute']);
+var dashBoardApp = angular.module('dashBoardApp', ['ngRoute','ngDialog']);
 
 dashBoardApp.config(['$routeProvider',
     function($routeProvider) {

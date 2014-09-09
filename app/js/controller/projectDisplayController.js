@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var projectDisplayController = function ($scope, $http) {
+var projectDisplayController = function ($scope, $http,projectService) {
 
     $scope.projects = [];
 
@@ -28,4 +28,4 @@ var projectDisplayController = function ($scope, $http) {
 
 };
 
-dashBoardApp.controller('projectDisplayController', ['$scope', '$http', projectDisplayController]);
+dashBoardApp.controller('projectDisplayController', ['$scope', '$http','projectService', projectDisplayController]);
