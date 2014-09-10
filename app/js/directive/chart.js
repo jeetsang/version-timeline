@@ -4,12 +4,8 @@ var chart = function(){
 
     function link($scope, element, attrs){
 
-        console.log("Data to plot "+$scope[attrs.chartData]);
-
-//        projectsRetriever.service().then()
-
-        //Y-Axis
         function updateChart(newValue, oldValue, $scope) {
+        //Y-Axis
 
             var svg = d3.select(element[0]).select('svg');
             svg.selectAll('g').remove();
@@ -18,6 +14,9 @@ var chart = function(){
 
             var releaseDates = [];
             var projectNames = [""];
+
+            if(typeof $scope.projects == 'undefined') return;
+
             $scope.projects.forEach(function(p,i){
                 projectNames.push(p.name);
                 if(typeof p.releases  == "undefined")
@@ -27,7 +26,7 @@ var chart = function(){
                 });
             });
 
-            console.log(releaseDates);
+            console.log("Release Dates " +releaseDates);
 
 
             //Y-Axis
@@ -86,31 +85,7 @@ var chart = function(){
     }
     return {
         link: link,
-        template: "<svg width='800' height='800'></svg>",
-        controller: ['$scope', '$http', function($scope, $http){
-            $scope.projects = [];
-
-            var onProjectsSuccess = function (data) {
-                $scope.projects = data;
-                var index;
-                for (index = 0; index < $scope.projects.length; index++) {
-                    var project = $scope.projects[index];
-                    console.log("Inside "+project);
-
-                    var callback = function(index){
-                        return function (releaseData) {
-                            $scope.projects[index]['releases'] = releaseData;
-                            console.log("I am inside success for "+$scope.projects[index].name);
-                        };
-                    };
-
-                    $http.get("data/" + project.name + ".json").success(callback(index));
-                }
-            };
-
-            $http.get("data/projects.json").success(onProjectsSuccess);
-
-        }]
+        template: "<svg width='800' height='800'></svg>"
     }
 };
 
