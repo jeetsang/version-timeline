@@ -43,3 +43,7 @@
 .svg-chart{
     margin-left: 200px;
 }
+
+.yAxis{
+    color:red;
+}

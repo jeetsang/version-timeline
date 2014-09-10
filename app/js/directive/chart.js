@@ -69,7 +69,14 @@ var chart = function(projectUtility){
                 .orient('bottom').tickPadding(-20);
 
 
-            svg.append('g').call(xaxis).attr('transform','translate('+xPadding+','+yPadding+')');
+            svg.append('g').call(xaxis).attr('transform','translate('+xPadding+','+yPadding+')').attr('class', 'yAxis');
+
+            d3.selectAll('.yAxis .tick')
+//                .filter(function(d){ return typeof(d) == "string"; })
+                .on("click", function(d){
+                    console.log("The d value"+d);
+                document.location.href = "#/project/"+xData[d];
+            }).style("cursor", "pointer").style('text-color','#428bca');
 
 
 

@@ -16,6 +16,39 @@ var projectEntryController = function ($scope,$http, $routeParams) {
 
     });
 
+    $scope.newRelease.featureList=[];
+
+    $scope.addFeature=function(){
+
+        $scope.newRelease.featureList.push($scope.featureValue)
+    };
+
+    $scope.newRelease.bugs=[];
+    $scope.addBug=function(){
+
+        $scope.newRelease.bugs.push($scope.bugValue);
+    };
+
+    $scope.newRelease.comments=[];
+
+    $scope.addComment=function(){
+
+        $scope.newRelease.comments.push($scope.commentValue);
+    };
+
+    $scope.newRelease.devDependency=[];
+
+    $scope.addDependency=function(){
+
+        var dep={};
+        dep.depProjectName=$scope.depProjectName;
+        dep.depReleaseVersion=$scope.depReleaseVersion;
+
+
+        $scope.newRelease.devDependency.push(dep);
+
+    };
+
 
     $scope.update=function(){
 

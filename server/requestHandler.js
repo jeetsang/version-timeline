@@ -19,7 +19,7 @@ function handle(request, response) {
         pathname = pathname + ".json";
 
         fs.exists(pathname, function (exists) {
-            if (exists) {
+//            if (exists) {
                 if (request.method == 'GET') {
                     respondFile(pathname, response);
                 }
@@ -32,11 +32,11 @@ function handle(request, response) {
                         response.end();
                     });
                 }
-            }
-            else {
-                response.writeHead(400, {"Content-Type": "text/plain"});
-                response.end();
-            }
+//            }
+//            else {
+//                response.writeHead(400, {"Content-Type": "text/plain"});
+//                response.end();
+//            }
         });
     });
 }
