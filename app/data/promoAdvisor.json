@@ -11,11 +11,11 @@
         "devDependency": [
             {
                 "depProjectName": "B2B",
-                "depReleaseVersion": 0.1
+                "depReleaseVersion": 0.2
             },
             {
                 "depProjectName": "P4R",
-                "depReleaseVersion": 0.1
+                "depReleaseVersion": 0.2
             }
         ]
     },
@@ -25,8 +25,8 @@
         "comments": ["c1"],
         "devDependency": [
             {
-                "depProjectName": "d1",
-                "depReleaseVersion": "1"
+                "depProjectName": "P4R",
+                "depReleaseVersion": "2.0"
             }
         ],
         "versionNumber": "11",

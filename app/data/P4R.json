@@ -1,7 +1,7 @@
 [
     {
         "versionNumber": 0.2,
-        "releaseDate": "2014-06-01",
+        "releaseDate": "2014-09-01",
         "releaseName": "Delta",
         "releaseType": "Major",
         "prevRelease": 0.1,
@@ -17,20 +17,20 @@
         ]
     },
     {
+        "versionNumber": 3.0,
         "featureList": ["green body"],
         "bugs": ["header problem"],
         "comments": [],
         "devDependency": [],
-        "versionNumber": "7.1",
         "releaseDate": "2014-09-10",
         "releaseName": "hulk"
     },
     {
+        "versionNumber": "11",
         "featureList": [],
         "bugs": [],
         "comments": [],
         "devDependency": [],
-        "versionNumber": "11",
         "releaseDate": "2014-01-01",
         "releaseName": "oldest"
     },

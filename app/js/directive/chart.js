@@ -1,15 +1,21 @@
 'use strict'
 
-var chart = function(){
+var chart = function(projectUtility){
 
     function link($scope, element, attrs){
 
         function updateChart(newValue, oldValue, $scope) {
         //Y-Axis
 
+            var xPadding = 100;
+            var yPadding = 50;
+            var xAxisRange = 600;
+            var yAxisRange = 600;
+
             var svg = d3.select(element[0]).select('svg');
             svg.selectAll('g').remove();
             svg.selectAll('circle').remove();
+            svg.selectAll('path').remove();
 
 
             var releaseDates = [];
@@ -26,7 +32,7 @@ var chart = function(){
                 });
             });
 
-            console.log("Release Dates " +releaseDates);
+            //console.log("Release Dates " +releaseDates);
 
 
             //Y-Axis
@@ -39,15 +45,15 @@ var chart = function(){
 //            var yData = releaseDates;
 
             var yscale = d3.time.scale();
-            yscale.domain([maxyDate, minyDate]).range([0,400]);
+            yscale.domain([maxyDate, minyDate]).range([0,yAxisRange]);
 
-            console.log(minyDate, maxyDate);
+            //console.log(minyDate, maxyDate);
 
             var yaxis = d3.svg.axis().scale(yscale).
                 tickFormat(d3.time.format("%Y %b"))
                 .orient('left');
 
-            svg.append('g').call(yaxis).attr('transform','translate(100,50)');
+            svg.append('g').call(yaxis).attr('transform','translate('+xPadding+','+yPadding+')');
 
 
 
@@ -57,27 +63,74 @@ var chart = function(){
             var xData = projectNames.sort();
 
             var xscale = d3.scale.linear();
-            xscale.domain([0,xData.length]).range([0,500]);
+            xscale.domain([0,xData.length]).range([0,xAxisRange]);
 
             var xaxis = d3.svg.axis().scale(xscale).tickFormat(function(d){return xData[d]})
-                .orient('bottom');
+                .orient('bottom').tickPadding(-20);
 
 
-            svg.append('g').call(xaxis).attr('transform','translate(100,50)');
+            svg.append('g').call(xaxis).attr('transform','translate('+xPadding+','+yPadding+')');
 
 
 
             //Data Plot
 
-            $scope.projects.forEach(function (d, index) {
-
-                svg.selectAll('circle' + d.name).data(d.releases).enter().append('circle').attr('r', 5).attr('fill', 'green').attr('class', d.name)
+            $scope.projects.forEach(function (project) {
+                svg.selectAll('circle' + project.name).data(project.releases).enter().append('circle').attr('r', 3).attr('fill', 'green').attr('class', project.name)
                     .attr('transform', function (eachRelease) {
-                        console.log("The value = " + eachRelease);
-                        return 'translate(' + (xscale(xData.indexOf(d.name)) + 100) + ',' + (yscale(new Date(eachRelease.releaseDate)) + 50) + ')';
+                        //console.log("The value = " + eachRelease);
+                        return 'translate(' + (xscale(xData.indexOf(project.name)) + xPadding) + ',' + (yscale(new Date(eachRelease.releaseDate)) + yPadding) + ')';
                     });
 
             });
+
+            addDependencies();
+            //Dependency Plot
+
+            function addDependencies(){
+                $scope.projects.forEach(function (project) {
+                    if(typeof project.releases == 'undefined') return;
+                    project.releases.forEach(function(release){
+
+                        console.log("Release Dependency = "+release.devDependency);
+
+                        if(typeof release.devDependency == 'undefined') return;
+                        release.devDependency.forEach(function(dependency){
+                            var releaseInfo = projectUtility.findReleaseInfo($scope.projects, dependency.depProjectName, dependency. depReleaseVersion);
+                            if(typeof releaseInfo == 'undefined') return;
+
+                            var lineData = [[xscale(xData.indexOf(project.name)) + xPadding, yscale(new Date(release.releaseDate)) + yPadding]];
+
+                            lineData.push([xscale(xData.indexOf(dependency.depProjectName)) + xPadding, yscale(new Date(releaseInfo.releaseDate)) + yPadding]);
+
+                            var line = d3.svg.line().x(function(d){return d[0]}).y(function(d){return d[1]});
+
+//                            svg.append('path').attr('d', line(lineData)).attr('stroke',"green").attr('fill', 'none');
+
+                            svg.append("svg:defs").selectAll("marker")
+                                .data(["end"])      // Different link/path types can be defined here
+                                .enter().append("svg:marker")    // This section adds in the arrows
+                                .attr("id", String)
+                                .attr("viewBox", "0 -5 10 10")
+                                .attr("refX", 15)
+                                .attr("refY", -1.5)
+                                .attr("markerWidth", 8)
+                                .attr("markerHeight", 8)
+                                .attr("orient", "auto")
+                                .append("svg:path")
+                                .attr("d", "M0,-5L10,0L0,5");
+
+                            svg.append('path').attr('d', line(lineData)).attr('stroke',"grey").attr('fill', 'none').attr("marker-end", "url(#end)");
+
+
+
+                        });
+                    });
+
+                });
+
+            }
+
 
         }
 
@@ -89,4 +142,4 @@ var chart = function(){
     }
 };
 
-dashBoardApp.directive('chart', ['projectsRetriever', chart]);
+dashBoardApp.directive('chart', ['projectUtility', chart]);
