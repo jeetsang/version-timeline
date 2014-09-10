@@ -6,6 +6,8 @@ var chart = function(){
 
         console.log("Data to plot "+$scope[attrs.chartData]);
 
+//        projectsRetriever.service().then()
+
         //Y-Axis
         function updateChart(newValue, oldValue, $scope) {
 
@@ -112,4 +114,4 @@ var chart = function(){
     }
 };
 
-dashBoardApp.directive('chart', chart);
+dashBoardApp.directive('chart', ['projectsRetriever', chart]);
