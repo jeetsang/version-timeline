@@ -1,14 +1,14 @@
 'use strict';
 var  projectService=function(){
 
-    this.projectName="";
+    this.release={};
 
-     this.setProjectName=function(name){
-        this.projectName=name;
+     this.setRelease=function(release){
+        this.release=release;
     };
-    this.getProjectName=function(){
+    this.getRelesae=function(){
 
-        return this.projectName;
+        return this.release;
     };
 
 };

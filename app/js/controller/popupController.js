@@ -7,14 +7,13 @@ var popUpController=function($scope,ngDialog,projectService){
 
 
 
-    $scope.clickToOpen=function(name){
+    $scope.clickToOpen=function(release){
 
-        projectService.setProjectName(name);
+        projectService.setRelease(release);
         ngDialog.open({
             template: 'popUp.html',
             plain:false,
             controller: 'popUpDataController'
-
         });
     };
 
@@ -31,13 +30,8 @@ var popUpDataController=function($scope, ngDialog,$http,projectService){
     };
 
 
-    $scope.project={};
-    $scope.projectName = projectService.getProjectName();
-//    $http.get("data/"+projectService.getProjectName()).success(function(projectData){
-//
-//        $scope.project=projectData;
-//
-//    });
+    $scope.release={};
+    $scope.release =projectService.getRelesae();
 
 };
 dashBoardApp.controller('popUpDataController',['$scope','ngDialog','$http','projectService',popUpDataController]);

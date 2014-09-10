@@ -1,12 +1,13 @@
 <div class="container-fluid">
+    <a href="#/addProject/">Add new Project</a>
     <div class="row">
         <div class="col-md-4"
              ng-repeat="project in projects | orderBy : predicate = 'name.toUpperCase()' : reverse=false">
 
-            <div ng-controller="popUpController"><label ng-click="clickToOpen(project.name)">{{project.name}}</label> <a href="#/project/{{project.name}}">(+)</a></div>
+            <div >{{project.name}}<a href="#/project/{{project.name}}">(+)</a></div>
 
-            <div ng-repeat="release in project.releases | orderBy : predicate = '-releaseDate' : reverse=false">
-                <span>{{release.versionNumber}}</span>
+            <div ng-controller="popUpController" ng-repeat="release in project.releases | orderBy : predicate = '-releaseDate' : reverse=false">
+                <span ><a href="" ng-click="clickToOpen(release)"  >{{release.versionNumber}}</a></span>
                 <span>{{release.releaseDate}}</span>
                 <span>{{release.releaseName}}</span>
             </div>

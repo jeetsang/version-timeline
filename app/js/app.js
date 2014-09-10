@@ -15,9 +15,12 @@ dashBoardApp.config(['$routeProvider',
                 templateUrl: 'partials/projectEntry.html',
                 controller: 'projectEntryController'
             }).
+            when('/addProject/',{
+                templateUrl:'partials/addProject.html',
+                controller:'addProjectController'
+            }).
             otherwise({
                 redirectTo: '/display'
             });
     }
 ]);
-

@@ -1,6 +1,7 @@
 <div>
     <h4>Release Entry</h4>
-    <form novalidate class="simple-form">
+    <form class="navbar-form navbar-left" novalidate class="simple-form">
+
 
         Choosen Project :<label>{{project.name}}</label><br />
         Version Number: <input type="text" data-ng-model="newRelease.versionNumber" /><br />
@@ -36,7 +37,7 @@
             </div>
         </div>
         <br/>
-        <button ng-click="reset()">RESET</button>
+
         <button ng-click="update()">SAVE</button>
 
     </form>
