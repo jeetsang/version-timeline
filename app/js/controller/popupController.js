@@ -2,10 +2,11 @@
  * Created by jitendrv on 9/9/2014.
  */
 'use strict';
-var popUpController=function($scope,ngDialog,projectService){
+var popUpController=function($scope,ngDialog,projectService, projectUtility){
+    $scope.displayProjectInfo = function(projectName){
 
-
-
+        $scope.clickToOpen(projectUtility.findProject($scope.projects, projectName));
+    };
 
     $scope.clickToOpen=function(project,versionNumber){
 
@@ -20,7 +21,7 @@ var popUpController=function($scope,ngDialog,projectService){
 
 };
 
-dashBoardApp.controller('popUpController',['$scope','ngDialog','projectService',popUpController]);
+dashBoardApp.controller('popUpController',['$scope','ngDialog','projectService', 'projectUtility', popUpController]);
 
 
 var popUpDataController=function($scope, ngDialog,$http,projectService){

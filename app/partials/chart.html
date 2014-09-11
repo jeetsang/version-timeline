@@ -1,4 +1,4 @@
-<div ng-controller="popUpDataController"></div>
+<div ng-controller="popUpController">
 <svg ng-attr-width='{{graph.width}}' ng-attr-height='{{graph.height}}' id="svg">
 
     <!--Y Axis-->
@@ -18,7 +18,10 @@
     <g transform="translate({{axis.x}},{{axis.y}})">
         <g ng-repeat="tick in xaxisLabels" class="tick" ng-attr-transform="translate({{xscale(tick)}},0)">
             <line y2="6" x2="0"></line>
-            <text y="-14" x="0" dy=".71em" style="text-anchor: middle;"><a plot-dependency ng-click="clickOnProject(projectNames[tick])">{{projectNames[tick]}}</a></text>
+            <text y="-14" x="0" dy=".71em" style="text-anchor: middle;">
+                    <a plot-dependency ng-click="clickOnProject(projectNames[tick])">{{projectNames[tick]}}</a>
+                    <a ng-if="projectNames[tick] != undefined && projectNames[tick] != '' " ng-click="displayProjectInfo(projectNames[tick])">(+)</a>
+            </text>
         </g>
         <path class="domain" ng-attr-d="M0,2V0H{{xAxisRange}}V2"></path>
     </g>
@@ -30,4 +33,4 @@
         </marker>
     </defs>
 </svg>
-
+</div>

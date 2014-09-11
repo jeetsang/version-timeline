@@ -5,20 +5,6 @@
         <div class="container-fluid">
             <a href="#/addProject/">Add new Project</a>
 
-            <div class="row">
-                <div class="col-md-4" ng-controller="popUpController"
-                     ng-repeat="project in projects | orderBy : predicate = 'name.toUpperCase()' : reverse=false">
-
-                    <div>{{project.name}}<a href="" ng-click="clickToOpen(project)">(+)</a></div>
-
-                    <div
-                         ng-repeat="release in project.releases | orderBy : predicate = '-releaseDate' : reverse=false">
-                        <span><a href="" ng-click="clickToOpen(project,release.versionNumber)">{{release.versionNumber}}</a></span>
-                        <span>{{release.releaseDate}}</span>
-                        <span>{{release.releaseName}}</span>
-                    </div>
-                </div>
-
             </div>
             <div chart class="panel-body" ng-controller="chartInfoController"/>
         </div>

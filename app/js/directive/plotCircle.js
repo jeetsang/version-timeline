@@ -19,7 +19,7 @@ var chart = function (projectUtility) {
                     .attr('onmouseover', "this.setAttribute('r', 6)")
                     .attr('onmouseout', "this.setAttribute('r', 3)")
                     .on('click', function(eachRelease){
-                        return $scope.clickToOpen(eachRelease);
+                        return $scope.clickToOpen(project, eachRelease.versionNumber);
                     });
 
             });
@@ -40,15 +40,14 @@ var chart = function (projectUtility) {
         templateUrl: 'partials/chart.html',
         controller: function ($scope, ngDialog, projectService) {
 
-            $scope.clickToOpen = function (release) {
+            $scope.clickToOpen = function (project, versionNumber) {
 
-                projectService.setRelease(release);
+                projectService.setProject(project,versionNumber);
                 ngDialog.open({
-                    template: 'popUp.html',
-                    plain: false,
-                    controller: 'popUpDataController',
-                    scope: $scope
-
+                    template: 'partials/projectEntry.html',
+                    plain:false,
+                    controller: 'projectEntryController',
+                    scope:$scope
                 });
             };
 
