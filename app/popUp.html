@@ -1,54 +1,53 @@
- <div >
-     <table class="table table-hover">
-         <tbody>
-         <tr>
-             <td>Version Number
-             <td>{{release.versionNumber}}</td>
-         </tr>
-         <tr>
-             <td>Release Name</td>
-             <td>{{release.releaseName}}</td>
-         </tr>
-         <tr>
-             <td>Release Date</td>
-             <td>{{release.releaseDate}}</td>
-         </tr>
-         <tr>
-             <td>Release Type</td>
-             <td>{{release.releaseType}}</td>
-         </tr>
-         <tr>
-             <td>Previous Release</td>
-             <td>{{release.prevRelease}}</td>
-         </tr>
-         <tr>
-             <td>Feature List</td>
-             <td >
-                 <ul ng-repeat="feature in release.featureList" class="list-group">
-                     <li class="list-group-item">{{feature}}</li>
-                 </ul>
-             </td>
-         </tr>
-         <tr>
-             <td>Bugs</td>
-             <td >
-                 <ul ng-repeat="bug in release.bugs" class="list-group">
-                     <li class="list-group-item">{{bug}}</li>
-                 </ul>
-             </td>
-         </tr>
-         <tr>
-             <td>Comments</td>
-             <td >
-                 <ul ng-repeat="comment in release.comments" class="list-group">
-                     <li class="list-group-item">{{comment}}</li>
-                 </ul>
-             </td>
-         </tr>
+ <!--<div >-->
+     <!--<table class="table table-hover">-->
+         <!--<tbody>-->
+         <!--<tr>-->
+             <!--<td>Version Number</td>-->
+             <!--<td>{{release.versionNumber}}</td>-->
+         <!--</tr>-->
+         <!--<tr>-->
+             <!--<td>Release Name</td>-->
+             <!--<td>{{release.releaseName}}</td>-->
+         <!--</tr>-->
+         <!--<tr>-->
+             <!--<td>Release Date</td>-->
+             <!--<td>{{release.releaseDate}}</td>-->
+         <!--</tr>-->
+         <!--<tr>-->
+             <!--<td>Release Type</td>-->
+             <!--<td>{{release.releaseType}}</td>-->
+         <!--</tr>-->
+         <!--<tr>-->
+             <!--<td>Previous Release</td>-->
+             <!--<td>{{release.prevRelease}}</td>-->
+         <!--</tr>-->
+         <!--<tr>-->
+             <!--<td>Feature List</td>-->
+             <!--<td ng-repeat="feature in release.featureList" >-->
+                 <!--<label>{{feature}}<a href="" ng-click="removeFeature(feature)">-</a></label>-->
+
+             <!--</td>-->
+         <!--</tr>-->
+         <!--<tr>-->
+             <!--<td>Bugs</td>-->
+             <!--<td >-->
+                 <!--<ul ng-repeat="bug in release.bugs" class="list-group">-->
+                     <!--<li class="list-group-item">{{bug}}</li>-->
+                 <!--</ul>-->
+             <!--</td>-->
+         <!--</tr>-->
+         <!--<tr>-->
+             <!--<td>Comments</td>-->
+             <!--<td >-->
+                 <!--<ul ng-repeat="comment in release.comments" class="list-group">-->
+                     <!--<li class="list-group-item">{{comment}}</li>-->
+                 <!--</ul>-->
+             <!--</td>-->
+         <!--</tr>-->
 
 
 
-       </tbody>
-     </table>
- </div>
- <!--<a href="" ng-click="closeSecond()">Close all by click here!</a>-->
+       <!--</tbody>-->
+     <!--</table>-->
+ <!--</div>-->
+ <!--&lt;!&ndash;<a href="" ng-click="closeSecond()">Close all by click here!</a>&ndash;&gt;-->

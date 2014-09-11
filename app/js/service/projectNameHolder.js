@@ -1,15 +1,24 @@
 'use strict';
 var  projectService=function(){
 
-    this.release={};
+   this.project={};
+   this.versionNumber = "";
 
-     this.setRelease=function(release){
-        this.release=release;
-    };
-    this.getRelesae=function(){
 
-        return this.release;
+     this.setProject=function(project,versionNumber){
+        this.project = project;
+         this.versionNumber=versionNumber;
     };
+    this.getProject=function(){
+
+        return this.project;
+    };
+
+    this.getVersionNumber=function(){
+
+        return this.versionNumber;
+    };
+
 
 };
 dashBoardApp.service('projectService',projectService);

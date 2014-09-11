@@ -7,13 +7,14 @@ var popUpController=function($scope,ngDialog,projectService){
 
 
 
-    $scope.clickToOpen=function(release){
+    $scope.clickToOpen=function(project,versionNumber){
 
-        projectService.setRelease(release);
+        projectService.setProject(project,versionNumber);
         ngDialog.open({
-            template: 'popUp.html',
+            template: 'partials/projectEntry.html',
             plain:false,
-            controller: 'popUpDataController'
+            controller: 'projectEntryController',
+            scope:$scope
         });
     };
 
@@ -24,14 +25,24 @@ dashBoardApp.controller('popUpController',['$scope','ngDialog','projectService',
 
 var popUpDataController=function($scope, ngDialog,$http,projectService){
 
-
-    $scope.closeSecond = function () {
-        ngDialog.close();
-    };
-
-
-    $scope.release={};
-    $scope.release =projectService.getRelesae();
+//
+//    $scope.closeSecond = function () {
+//        ngDialog.close();
+//    };
+//
+//
+//
+//    $scope.release={};
+//    $scope.release =projectService.getRelesae();
+//
+//    $scope.removeFeature=function(feature){
+//
+//        var index=$scope.release.featureList.indexOf(feature);
+//        if(index >-1)
+//        {
+//            $scope.release.featureList.splice(index,1);
+//        }
+//    }
 
 };
 dashBoardApp.controller('popUpDataController',['$scope','ngDialog','$http','projectService',popUpDataController]);

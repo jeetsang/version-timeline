@@ -2,74 +2,85 @@
 
 /* Controllers */
 
-var projectEntryController = function ($scope,$http, $routeParams) {
+var projectEntryController = function ($scope, $http, $routeParams, projectService, projectReleaseFinder, projectUtility) {
+
+        $scope.project = {};
+        $scope.project.releases = [];
+
+        var versionNumer = "";
+        var versionindex = 0;
 
 
-    $scope.projects=[];
-    $scope.newRelease={};
-    $scope.project = {};
+        var project = projectService.getProject();
+        $scope.project = project;
+        versionNumer = projectService.getVersionNumber();
 
-    $http.get("data/projects").success(function(projectData){
+        if(typeof versionNumer != 'undefined') {
+            $scope.project.releases.forEach(function (release) {
+                if (release.versionNumber == versionNumer) {
+                    $scope.project.newRelease = release;
+                }
+            });
+        }
 
-        $scope.projects=projectData;
-        $scope.project.name = $routeParams.name;
-
-    });
-
-    $scope.newRelease.featureList=[];
-
-    $scope.addFeature=function(){
-
-        $scope.newRelease.featureList.push($scope.featureValue)
-    };
-
-    $scope.newRelease.bugs=[];
-    $scope.addBug=function(){
-
-        $scope.newRelease.bugs.push($scope.bugValue);
-    };
-
-    $scope.newRelease.comments=[];
-
-    $scope.addComment=function(){
-
-        $scope.newRelease.comments.push($scope.commentValue);
-    };
-
-    $scope.newRelease.devDependency=[];
-
-    $scope.addDependency=function(){
-
-        var dep={};
-        dep.depProjectName=$scope.depProjectName;
-        dep.depReleaseVersion=$scope.depReleaseVersion;
+        if(typeof  $scope.project.newRelease == 'undefined'){
+            $scope.project.newRelease = {};
+        }
 
 
-        $scope.newRelease.devDependency.push(dep);
+        $scope.project.newRelease.featureList = [];
 
-    };
+        $scope.addFeature = function () {
+
+            $scope.project.newRelease.featureList.push($scope.featureValue)
+        };
+
+        $scope.project.newRelease.bugs = [];
+        $scope.addBug = function () {
+
+            $scope.project.newRelease.bugs.push($scope.bugValue);
+        };
+
+        $scope.project.newRelease.comments = [];
+
+        $scope.addComment = function () {
+
+            $scope.project.newRelease.comments.push($scope.commentValue);
+        };
+
+        $scope.project.newRelease.devDependency = [];
+
+        $scope.addDependency = function () {
+
+            var dep = {};
+            dep.depProjectName = $scope.depProjectName;
+            dep.depReleaseVersion = $scope.depReleaseVersion;
 
 
-    $scope.update=function(){
+            $scope.project.newRelease.devDependency.push(dep);
 
-        console.log($scope.newRelease);
-        console.log($scope.project.name);
+        };
 
-        $http.get("data/"+$scope.project.name).success(function(oldReleaseData){
 
-                console.log(oldReleaseData);
-            $scope.project.releases=oldReleaseData;
-            console.log("This is project = "+$scope.project.releases[0]);
-            $scope.project.releases.push($scope.newRelease);
-            console.log($scope.project);
+        $scope.update = function () {
 
-            $http.post("data/"+$scope.project.name,$scope.project.releases).success(function(data){
+            var filteredRelease = projectUtility.findReleaseInfo($scope.projects, $scope.project.name, $scope.project.newRelease.versionNumber);
+            if (typeof filteredRelease == 'undefined') {
+                $scope.project.releases.push($scope.project.newRelease);
+                console.log($scope.project);
+            }
+            else {
+                filteredRelease = $scope.project.newRelease;
+            }
+
+            $http.post("data/" + $scope.project.name, $scope.project.releases).success(function (data) {
                 console.log("Post successful");
-                window.location="http://localhost:8000/app/";
+                window.location = "http://localhost:8000/app/";
             });
 
-        });
-    };
-};
+        };
 
-dashBoardApp.controller('projectEntryController', ['$scope','$http', '$routeParams', projectEntryController]);
+    }
+    ;
+
+dashBoardApp.controller('projectEntryController', ['$scope', '$http', '$routeParams', 'projectService', 'projectReleaseFinder', 'projectUtility', projectEntryController]);
