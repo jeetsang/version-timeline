@@ -40,10 +40,11 @@
     line-height: 50px;
  }
 
-.svg-chart{
-    margin-left: 200px;
+.ngdialog.ngdialog-theme-plain .ngdialog-content {
+    display: inline-block;
 }
 
-.yAxis{
-    color:red;
+.container-fluid {
+    /*z-index: 1;*/
+    display: block;
 }

@@ -1,0 +1,33 @@
+<div ng-controller="popUpDataController"></div>
+<svg ng-attr-width='{{graph.width}}' ng-attr-height='{{graph.height}}' id="svg">
+
+    <!--Y Axis-->
+
+    <g transform="translate({{axis.x}},{{axis.y}})">
+        <g ng-repeat="tick in yaxisLabels" class="tick" ng-attr-transform="translate(0,{{yscale(tick)}})">
+            {{tick}}
+            <text x="-9" y="0" dy=".32em" style="text-anchor: end;">{{tick | date:'MMM-yyyy'}}</text>
+            <line x2="6" y2="0" stroke="blue"></line>
+        </g>
+        <path class="domain" ng-attr-d="M2,0H0V{{yAxisRange}}H2"></path>
+    </g>
+
+
+    <!--X-Axis-->
+
+    <g transform="translate({{axis.x}},{{axis.y}})">
+        <g ng-repeat="tick in xaxisLabels" class="tick" ng-attr-transform="translate({{xscale(tick)}},0)">
+            <line y2="6" x2="0"></line>
+            <text y="-14" x="0" dy=".71em" style="text-anchor: middle;"><a plot-dependency ng-click="clickOnProject(projectNames[tick])">{{projectNames[tick]}}</a></text>
+        </g>
+        <path class="domain" ng-attr-d="M0,2V0H{{xAxisRange}}V2"></path>
+    </g>
+
+    <!--Arrow Marker-->
+    <defs>
+        <marker id="end" viewBox="0 -5 10 10" refX="15" refY="-1.5" markerWidth="8" markerHeight="8" orient="auto">
+            <path d="M0,-5L10,0L0,5"></path>
+        </marker>
+    </defs>
+</svg>
+

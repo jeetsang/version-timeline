@@ -2,18 +2,24 @@ var projectUtility = function () {
     return {
         findReleaseInfo: function (projects, projectName, versionNumber) {
 
-            var filteredProject = projects.filter(function (project) {
-                return project.name == projectName;
-            });
+            var filteredProject = this.findProject(projects, projectName);
 
-            if(filteredProject == 0 || typeof filteredProject[0].releases == 'undefined')
+            if(typeof filteredProject == 'undefined' || typeof filteredProject.releases == 'undefined')
                 return;
 
-            var release = filteredProject[0].releases.filter(function (release) {
+            var release = filteredProject.releases.filter(function (release) {
                 return release.versionNumber == versionNumber;
             });
 
             return release[0];
+        },
+
+        findProject: function(projects, projectName){
+            var filteredProject = projects.filter(function (project) {
+                return project.name == projectName;
+            });
+
+            return filteredProject[0];
         }
     }
 };

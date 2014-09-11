@@ -16,10 +16,8 @@ var projectReleaseFinder = function ($http, $q) {
             projects.forEach(function(project){
                 var promise = this.populateReleaseForProject(project);
                 promises.push(promise);
-                console.log(project);
             },this);
 
-            console.log(promises.length);
             return $q.all(promises);
         }
     }
