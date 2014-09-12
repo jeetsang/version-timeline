@@ -29,3 +29,16 @@ body{
     overflow: hidden;
     height: 100%;
 }
+.project-name{
+    position: relative;
+    top: -10px;
+    font-weight: bold;
+}
+
+.project-entry-popup{
+
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+    width:800px;
+}

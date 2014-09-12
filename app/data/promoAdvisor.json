@@ -3,21 +3,12 @@
         "versionNumber": 0.2,
         "releaseDate": "2014-06-01",
         "releaseName": "Delta",
-        "featureList": ["feature1", "feature2"],
-        "bugs": ["bug1", "bug2"],
-        "comments": ["comment1", "comment2"],
+        "featureList": [],
+        "bugs": ["b1"],
+        "comments": [],
         "releaseType": "Major",
         "prevRelease": 0.1,
-        "devDependency": [
-            {
-                "depProjectName": "B2B",
-                "depReleaseVersion": 0.2
-            },
-            {
-                "depProjectName": "P4R",
-                "depReleaseVersion": 0.2
-            }
-        ]
+        "devDependency": []
     },
     {
         "featureList": ["f1"],

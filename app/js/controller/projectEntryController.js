@@ -15,7 +15,7 @@ var projectEntryController = function ($scope, $http, $routeParams, projectServi
         $scope.project = project;
         versionNumer = projectService.getVersionNumber();
 
-        if(typeof versionNumer != 'undefined') {
+        if (typeof versionNumer != 'undefined') {
             $scope.project.releases.forEach(function (release) {
                 if (release.versionNumber == versionNumer) {
                     $scope.project.newRelease = release;
@@ -23,44 +23,36 @@ var projectEntryController = function ($scope, $http, $routeParams, projectServi
             });
         }
 
-        if(typeof  $scope.project.newRelease == 'undefined'){
+        if (typeof  $scope.project.newRelease == 'undefined') {
             $scope.project.newRelease = {};
         }
 
+        if (typeof   $scope.project.newRelease.bugs == 'undefined') {
+            $scope.project.newRelease.bugs = [];
+        }
 
-        $scope.project.newRelease.featureList = [];
+        if (typeof   $scope.project.newRelease.featureList == 'undefined') {
+            $scope.project.newRelease.featureList = [];
+        }
 
-        $scope.addFeature = function () {
+        if (typeof   $scope.project.newRelease.comments == 'undefined') {
+            $scope.project.newRelease.comments = [];
+        }
 
-            $scope.project.newRelease.featureList.push($scope.featureValue)
-        };
-
-        $scope.project.newRelease.bugs = [];
-        $scope.addBug = function () {
-
-            $scope.project.newRelease.bugs.push($scope.bugValue);
-        };
-
-        $scope.project.newRelease.comments = [];
-
-        $scope.addComment = function () {
-
-            $scope.project.newRelease.comments.push($scope.commentValue);
-        };
-
-        $scope.project.newRelease.devDependency = [];
+        if (typeof   $scope.project.newRelease.devDependency == 'undefined') {
+            $scope.project.newRelease.devDependency = [];
+        }
 
         $scope.addDependency = function () {
 
             var dep = {};
-            dep.depProjectName = $scope.depProjectName;
-            dep.depReleaseVersion = $scope.depReleaseVersion;
+            dep.depProjectName = $scope.depProject.name;
+            dep.depReleaseVersion = $scope.depRelease.versionNumber;
 
 
             $scope.project.newRelease.devDependency.push(dep);
 
         };
-
 
         $scope.update = function () {
 
@@ -79,7 +71,6 @@ var projectEntryController = function ($scope, $http, $routeParams, projectServi
             });
 
         };
-
     }
     ;
 

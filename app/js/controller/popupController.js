@@ -19,6 +19,17 @@ var popUpController=function($scope,ngDialog,projectService, projectUtility){
         });
     };
 
+
+    $scope.clickToOpenAddProjectPopUp=function(){
+
+        ngDialog.open({
+            template:'partials/addProject.html',
+            plain:false,
+            controller:'addProjectController',
+            className:'project-entry-popup'
+        });
+    };
+
 };
 
 dashBoardApp.controller('popUpController',['$scope','ngDialog','projectService', 'projectUtility', popUpController]);

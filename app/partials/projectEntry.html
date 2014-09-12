@@ -1,104 +1,122 @@
 <div>
-    <h4>Release Entry</h4>
-    <form  novalidate class="simple-form">
-    <table class="table table-hover">
-        <tbody>
-        <tr>
-            <td>Choosen Project :</td>
-            <td>{{project.name}}</td>
-        </tr>
-       <tr>
-           <td>Version Number:</td>
-           <td> <input type="text" data-ng-model="project.newRelease.versionNumber" ></td>
-       </tr>
-        <tr>
-            <td>Release Date:</td>
-            <td> <input type="date" data-ng-model="project.newRelease.releaseDate" ></td>
-        </tr>
-        <tr>
-            <td>Release Name:</td>
-            <td><input type="text" data-ng-model="project.newRelease.releaseName"  ></td>
-        </tr>
-        <tr>
-            <td>Release Type:</td>
-            <td><input type="text" data-ng-model="project.newRelease.releaseType"></td>
-        </tr>
-        <tr>
-            <td>Previous Release:</td>
-            <td><input type="text" data-ng-model="project.newRelease.prevRelease"></td>
-        </tr>
-        <tr>
-            <td>Feature List:</td>
-            <td><input type="text" data-ng-model="featureValue"></td>
-            <td><input type="button" value="Add Feature"  ng-click="addFeature()"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul ng-repeat="feature in project.newRelease.featureList" class="list-group">
-                    <li class="list-group-item">{{feature}}</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Bugs:</td>
-            <td><input type="text" data-ng-model="bugValue"></td>
-            <td><input type="button" value="Add Bug" ng-click="addBug()"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul ng-repeat="bug in project.newRelease.bugs" class="list-group">
-                    <li class="list-group-item">{{bug}}</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td> Comments:</td>
-            <td><input type="text" data-ng-model="commentValue"></td>
-            <td><input type="button" value="Add Comment" data-ng-Click="addComment()"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul ng-repeat="comment in project.newRelease.comments" class="list-group">
-                    <li class="list-group-item">{{comment}}</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Dependencies:</td>
-        </tr>
-        <tr>
-            <td> Project Name:</td>
-            <td><input type="text" data-ng-model="depProjectName"></td>
-        </tr>
-        <tr>
-            <td>Release Version:</td>
-            <td>:<input type="text" data-ng-model="depReleaseVersion"></td>
-            <td><input type="button" value="Add " data-ng-Click="addDependency()"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <ul data-ng-repeat="dependency in project.newRelease.devDependency" class="list-group">
-                    <li class="list-group-item">{{dependency.depProjectName}}:{{dependency.depReleaseVersion}}</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td> <button ng-click="update()">SAVE</button></td>
-            <td></td>
-        </tr>
+    <h3 class="project-name">{{project.name}}</h3>
+
+    <form novalidate role="form" class="form-inline">
+        <div class="form-group">
+            <label for="versionNumber">Version Number:</label>
+
+            <div>
+                <input id="versionNumber" class="form-control" type="text"
+                       data-ng-model="project.newRelease.versionNumber">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="releaseDate">Release Date:</label>
+
+            <div>
+                <input id="releaseDate" class="form-control" type="date" data-ng-model="project.newRelease.releaseDate">
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="releaseName">Release Name:</label>
+
+            <div>
+                <input id="releaseName" class="form-control" type="text" data-ng-model="project.newRelease.releaseName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Release Type:</label>
+
+            <div>
+                <select data-ng-model="project.newRelease.releaseType" class="form-control">
+                    <option>Major</option>
+                    <option>Hot Fix</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Previous Release:</label>
+
+            <div>
+                <select class="form-control" data-ng-model="project.newRelease.prevRelease"
+                        ng-options="release.versionNumber for release in project.releases"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="featureValueId">Feature</label>
+
+            <div>
+                <input class="form-control" id="featureValueId" type="text" data-ng-model="featureValue">
+
+                <input class="form-control btn-primary" type="button" value="Add Feature" ng-click="project.newRelease.featureList.push(featureValue)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Bug</label>
+
+            <div>
+                <input class="form-control" type="text" data-ng-model="bugValue">
+                <input class="form-control btn-primary" type="button" value="Add Bug" ng-click="project.newRelease.bugs.push(bugValue)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Comment</label>
+
+            <div>
+                <input class="form-control" type="text" data-ng-model="commentValue">
+                <input class="form-control btn-primary" type="button" value="Add Comment" ng-click="project.newRelease.comments.push(commentValue)">
+            </div>
+            <label>Dependency Project Name</label>
+
+            <div>
+
+                <select class="form-control"  data-ng-model="depProject" ng-selected="depProject"
+                        ng-options="project.name for project in projects"  ></select>
+            </div>
+
+            <label>Dependency Release Version</label>
+
+            <div>
+                <select class="form-control" data-ng-model="depReleaseVersion" ng-selected="depRelease"
+                        ng-options="release.versionNumber for release in depProject.releases"></select>
+                <input class="form-control btn-primary" type="button" value="Add " ng-click="addDependency()">
+            </div>
+        </div>
+
+        <div ng-repeat="feature in project.newRelease.featureList">
+            <label>Feature List:</label>
+
+            <label>{{feature}}<a href="">-</a></label>
 
 
-        </tbody>
-    </table>
+        </div>
+        <div ng-repeat="bug in project.newRelease.bugs">
+            <label>Bugs:</label>
+
+            <label>{{bug}}<a href="">-</a></label>
+
+        </div>
+        <div ng-repeat="comment in project.newRelease.comments">
+            <label>comments:</label>
+
+            <label>{{comment}}<a href="">-</a></label>
+
+        </div>
+
+        <div data-ng-repeat="dependency in project.newRelease.devDependency">
+            <label>Dependency List :</label>
+
+            <label>{{dependency.depProjectName}}:{{dependency.depReleaseVersion}}<a href="">-</a></label>
+
+        </div>
+
+        <div style="margin: 5px">
+
+            <button class="form-control btn-primary" ng-click="update()">SAVE</button>
+        </div>
+
 
     </form>
-
-
-
-
 </div>

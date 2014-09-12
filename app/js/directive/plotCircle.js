@@ -47,6 +47,7 @@ var chart = function (projectUtility) {
                     template: 'partials/projectEntry.html',
                     plain:false,
                     controller: 'projectEntryController',
+//                    className:'project-entry-popup',
                     scope:$scope
                 });
             };
