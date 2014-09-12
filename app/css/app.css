@@ -1,34 +1,5 @@
 /* app css stylesheet */
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
-
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
-}
-
 .header {
     background-color: #FAFAFA;
     height: 50px;
@@ -38,13 +9,23 @@
 .header h2{
     margin-left: 100px;
     line-height: 50px;
- }
+}
 
 .ngdialog.ngdialog-theme-plain .ngdialog-content {
     display: inline-block;
 }
 
-.container-fluid {
-    /*z-index: 1;*/
-    display: block;
+.right-navbar{
+    float: right;
+}
+
+#chart-container{
+    float: left;
+    overflow: auto;
+    max-resolution: 600px;
+}
+
+body{
+    overflow: hidden;
+    height: 100%;
 }

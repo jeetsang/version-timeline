@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
     <link rel="stylesheet" href='css/app.css'/>
     <link rel="stylesheet" href='css/display.css'/>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog.min.css">
     <link rel="stylesheet" href="bower_components/ngDialog/css/ngDialog-theme-default.css">
     <link rel="stylesheet" href="css/popUp.css"/>
@@ -36,11 +36,23 @@
 
 <body ng-app="dashBoardApp">
 <header>
-    <h2>Kal Chakra</h2>
+    <h2>Release Chakra</h2>
 </header>
-<div ng-view class=".container-fluid"/>
 
+<div class="container-fluid row">
 
+    <div ng-view class="col-md-10 .pre-scrollable" id="chart-container"></div>
+
+    <div class="col-md-2 sidebar">
+        <div class="right-navbar">
+            <ul class="nav nav-sidebar">
+                <li><a href="">Nav item again</a></li>
+                <li><a href="">One more nav</a></li>
+                <li><a href="">Another nav item</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 
 <!-- In production use:
